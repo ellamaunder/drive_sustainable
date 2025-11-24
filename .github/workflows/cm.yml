@@ -1,0 +1,22 @@
+yaml
+name: CI
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Change directory
+        run: cd exercise
+      - name: Run tests
+        working-directory: exercise
+        run: python3 -m unittest discover
+
