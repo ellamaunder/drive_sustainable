@@ -9,6 +9,8 @@ class Basket:
         self.items = {}
 
     def add_item(self, item, quantity):
+        if item not in Basket.item_prices:
+            return False
         current_quantity = self.items.get(item, 0)
         self.items[item] = current_quantity + quantity
         return True
@@ -16,6 +18,11 @@ class Basket:
     def remove_item(self, item, quantity):
         if item not in self.items:
             return False
+
+        current_quanity = self.items.get(item, 0)
+        if current_quanity - quantity <= 0:
+            del self.items[item]
+            return True
 
         self.items[item] -= quantity
         return True
