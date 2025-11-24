@@ -29,7 +29,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./exercise
-          file: ./exercise/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/basket-api:latest
           cache-from: type=gha
